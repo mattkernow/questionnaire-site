@@ -5,6 +5,18 @@
     <title>Home</title>
 </head>
 <body>
-THIS IS THE HOME PAGE.
+
+{% if user.is_authenticated %}
+    <p>Welcome, {{ user.username }}.</p>
+{% else %}
+    <p>Welcome, new user.</p><a href="login">please login</a>
+{% endif %}
+
+<p>THIS IS THE HOME PAGE</p>
+
+{% if user.is_authenticated %}
+    <a href="logout">Logout</a>
+{% endif %}
+
 </body>
 </html>

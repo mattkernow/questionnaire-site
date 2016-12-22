@@ -4,6 +4,5 @@ from . import views
 
 urlpatterns = [
     url('^', include('django.contrib.auth.urls')),
-    url(r'^', views.index, name='index'),
-
+    url(r'^home$', views.index, name='index'),
 ]
