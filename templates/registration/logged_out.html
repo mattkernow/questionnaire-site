@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Logout</title>
-</head>
-<body>
-<p>YOU ARE LOGGED OUT</p>
-</body>
-</html>
+{% extends 'base.html' %}
+{% block title %}Logout Page{% endblock %}
+{% block content %}
+    <p>You have now logged out</p>
+    <a href="/questionnaire/login">You can login here</a>
+{% endblock %}
