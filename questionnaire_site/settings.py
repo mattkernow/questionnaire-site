@@ -25,7 +25,7 @@ SECRET_KEY = 'b0d#e2yry&)+ned_c*l))3l9yf(2+orxcm&jpm0_a$5#qd!l%b'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['shielded-ravine-41256.herokuapp.com']
 
 
 # Application definition
@@ -82,7 +82,6 @@ DATABASES = {
     }
 }
 
-
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
 
@@ -116,8 +115,6 @@ USE_L10N = True
 USE_TZ = True
 
 LOGIN_REDIRECT_URL = '/'
-
-ALLOWED_HOSTS = ['shielded-ravine-41256.herokuapp.com']
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
