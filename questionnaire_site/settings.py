@@ -117,7 +117,10 @@ USE_TZ = True
 
 LOGIN_REDIRECT_URL = '/'
 
+ALLOWED_HOSTS = ['shielded-ravine-41256.herokuapp.com']
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+
