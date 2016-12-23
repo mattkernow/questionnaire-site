@@ -25,7 +25,7 @@ SECRET_KEY = 'b0d#e2yry&)+ned_c*l))3l9yf(2+orxcm&jpm0_a$5#qd!l%b'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['shielded-ravine-41256.herokuapp.com']
+ALLOWED_HOSTS = ['shielded-ravine-41256.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
@@ -77,8 +77,12 @@ WSGI_APPLICATION = 'questionnaire_site.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'questionnaire',
+        'USER': 'postgres',
+        'PASSWORD': 'postgres',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
     }
 }
 
@@ -120,4 +124,3 @@ LOGIN_REDIRECT_URL = '/'
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
-
