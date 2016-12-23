@@ -4,7 +4,7 @@
 {% if user.is_authenticated %}
     <p>Welcome, {{ user.username }}.</p>
 {% else %}
-    <p>Welcome, new user.</p><a href="/login">please login</a>
+    <p>Welcome, please <a href="/register">create an account</a> or <a href="/login">login</a></p>
 {% endif %}
 
 <p>This is the home page!</p>
