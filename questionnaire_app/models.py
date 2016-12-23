@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class Question(models.Model):
@@ -22,6 +23,10 @@ class OfferedAnswer(models.Model):
 
 
 class QuestionnaireQuestionAnswer(models.Model):
-    questionnaire = models.ForeignKey(Questionnaire, on_delete=models.CASCADE)
-    question = models.ForeignKey(Question, on_delete=models.CASCADE)
+    questionnaire_question = models.ForeignKey(QuestionnaireQuestion, on_delete=models.CASCADE)
     offered_answer = models.ForeignKey(OfferedAnswer, on_delete=models.CASCADE)
+
+
+class Answer(models.Model):
+    questionnaire_question_answer = models.ForeignKey(QuestionnaireQuestionAnswer, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
