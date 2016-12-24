@@ -4,5 +4,7 @@ from questionnaire_app.models import Question, Questionnaire, QuestionnaireQuest
 
 @admin.register(Question, Questionnaire, QuestionnaireQuestion)
 class AuthorAdmin(admin.ModelAdmin):
+    """
+    Register the question/questionnaire classes with django's admin.
+    """
     pass
-
