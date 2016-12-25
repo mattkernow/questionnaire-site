@@ -32,6 +32,9 @@ class QuestionnaireQuestion(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
     questionnaire = models.ForeignKey(Questionnaire, on_delete=models.CASCADE)
 
+    class Meta:
+        unique_together = ['question', 'questionnaire']
+
     def __str__(self):
         return '{} ({}) - Q: {}'.format(self.questionnaire, self.questionnaire.id, self.question.question_text)
 

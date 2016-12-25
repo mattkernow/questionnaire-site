@@ -1,10 +1,12 @@
 from django.contrib import admin
-from questionnaire_app.models import Question, Questionnaire, QuestionnaireQuestion
+from questionnaire_app.models import Questionnaire, QuestionnaireQuestion
 
 
-@admin.register(Question, Questionnaire, QuestionnaireQuestion)
-class AuthorAdmin(admin.ModelAdmin):
-    """
-    Register the question/questionnaire classes with django's admin.
-    """
-    pass
+class QuestionnaireQuestionInline(admin.TabularInline):
+    model = QuestionnaireQuestion
+
+
+class QuestionnaireAdmin(admin.ModelAdmin):
+    inlines = [QuestionnaireQuestionInline]
+
+admin.site.register(Questionnaire, QuestionnaireAdmin)
