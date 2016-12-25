@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Questionnaire site",
   "license": "MIT",
+  "engines": {
+    "node": "4.1.1"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/mattkernow/questionnaire-site"
