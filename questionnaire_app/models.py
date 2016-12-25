@@ -33,6 +33,9 @@ class QuestionnaireQuestion(models.Model):
     questionnaire = models.ForeignKey(Questionnaire, on_delete=models.CASCADE)
 
     class Meta:
+        """
+        A questionnaire must have unique questions.
+        """
         unique_together = ['question', 'questionnaire']
 
     def __str__(self):
