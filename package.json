@@ -1,4 +1,7 @@
 {
+  "name": "questionnaire-site",
+  "version": "1.0.0",
+  "description": "Questionnaire site",
   "dependencies": {
     "bower": "^1.8.0"
   },
