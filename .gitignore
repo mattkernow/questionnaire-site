@@ -3,3 +3,5 @@ db.sqlite3
 *.pyc
 questionnaire_site/static/
 node_modules/
+questionnaire_app/static/
+questionnaire_site/staticfiles/
