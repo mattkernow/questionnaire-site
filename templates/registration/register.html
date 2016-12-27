@@ -1,10 +1,64 @@
 {% extends 'base.html' %}
 {% block title %}Registration Page{% endblock %}
 {% block content %}
-  <h2>Register</h2>
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Create account</button>
-  </form>
+ <div class="large-3 large-centered columns">
+        <div class="user-box">
+            <div class="row">
+                <div class="large-12 columns">
+                    <form method="post" action="{% url 'register' %}">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="large-12 columns text-center">
+                                <h3>Register New User</h3>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="large-12 columns">
+                                {{ form.first_name.label_tag }}
+                                {{ form.first_name }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="large-12 columns">
+                                {{ form.last_name.label_tag }}
+                                {{ form.last_name }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="large-12 columns">
+                                {{ form.email.label_tag }}
+                                {{ form.email }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="large-12 columns">
+                                {{ form.username.label_tag }}
+                                {{ form.username }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="large-12 columns">
+                                {{ form.password1.label_tag }}
+                                {{ form.password1 }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="large-12 columns">
+                                {{ form.password2.label_tag }}
+                                {{ form.password2 }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="large-12 large-centered columns">
+                                <input type="submit" class="button expand" value="Create Account"/>
+                            </div>
+                        </div>
+                    </form>
+                    {% if form.errors %}
+                        <p>{{ form.errors }}</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
