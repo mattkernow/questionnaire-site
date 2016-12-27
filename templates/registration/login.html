@@ -8,12 +8,19 @@
                     <form method="post" action="{% url 'login' %}">
                         {% csrf_token %}
                         <div class="row">
+                            <div class="large-12 columns text-center">
+                                <h3>Log In</h3>
+                            </div>
+                        </div>
+                        <div class="row">
                             <div class="large-12 columns">
+                                {{ form.username.label_tag }}
                                 {{ form.username }}
                             </div>
                         </div>
                         <div class="row">
                             <div class="large-12 columns">
+                                {{ form.password.label_tag }}
                                 {{ form.password }}
                             </div>
                         </div>
