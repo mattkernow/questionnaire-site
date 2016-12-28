@@ -1,22 +1,23 @@
 {% extends 'base.html' %}
 {% block title %}Home Page{% endblock %}
 {% block content %}
-{% if user.is_authenticated %}
-    <p>Welcome, {{ user.username }}.</p>
-{% else %}
-    <p>Welcome, please <a href="/register">create an account</a> or <a href="/login">login</a></p>
-{% endif %}
+    {% if user.is_authenticated %}
+        <p>Welcome, {{ user.username }}.</p>
+    {% else %}
+        <p>Welcome, please <a href="/register">create an account</a> or <a href="/login">login</a></p>
+    {% endif %}
 
-<p>This is the home page of the questionnaire site!</p>
+    <p>This is the home page of the questionnaire site!</p>
 
-{% if user.is_authenticated %}
-
-    {%  for questionnaire in questionnaires %}
-        <p>{{ questionnaire.description }}</p>
-    {% empty %}
-        <p>There are currently no active questionnaires</p>
-    {% endfor %}
-
-{% endif %}
+    {% if user.is_authenticated %}
+        <p>Here are some questionnaires:</p>
+        <ul>
+            {% for questionnaire in questionnaires %}
+                <li><a href="/questionnaire">{{ questionnaire.description }}</a></li>
+            {% empty %}
+                <p>There are currently no active questionnaires</p>
+            {% endfor %}
+        </ul>
+    {% endif %}
 
 {% endblock %}
