@@ -13,7 +13,7 @@
         <p>Here are some questionnaires:</p>
         <ul>
             {% for questionnaire in questionnaires %}
-                <li><a href="/questionnaire">{{ questionnaire.description }}</a></li>
+                <li><a href="/questionnaire/{{ questionnaire.id }}">{{ questionnaire.description }}</a></li>
             {% empty %}
                 <p>There are currently no active questionnaires</p>
             {% endfor %}
