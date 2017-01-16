@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    {% load static %}
-    <link rel="stylesheet" href="{% static "bower_components/foundation/css/foundation.min.css" %}">
-    <link rel="stylesheet" href="{% static "questionnaire_app/main.css" %}">
     <title>{% block title %}{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static "bower_components/foundation-sites/dist/css/foundation.min.css" %}">
+    <link rel="stylesheet" href="{% static "questionnaire_app/main.css" %}">
 </head>
 <body>
 {% block content %}{% endblock %}
@@ -17,7 +17,8 @@
 {% endif %}
     {% load static %}
     <script src="{% static "bower_components/jquery/dist/jquery.min.js" %}"></script>
-    <script src="{% static "bower_components/foundation/js/foundation.min.js" %}"></script>
+    <script src="{% static "bower_components/what-input/dist/what-input.min.js" %}"></script>
+    <script src="{% static "bower_components/foundation-sites/dist/js/foundation.min.js" %}"></script>
     <script>
       $(document).foundation();
     </script>
