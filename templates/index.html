@@ -10,6 +10,42 @@
     <p>This is the home page of the questionnaire site!</p>
 
     {% if user.is_authenticated %}
+
+        <div class="row">
+            <div class="medium-11 large-centered columns">
+                        <div class="home-accordion">
+            <ul class="accordion" data-accordion data-allow-all-closed="true">
+                <li class="accordion-item" data-accordion-item>
+                    <a href="#" class="accordion-title">Module One</a>
+                    <div class="accordion-content" data-tab-content>
+                        <p>Module stuff here...</p>
+                    </div>
+                </li>
+                <li class="accordion-item" data-accordion-item>
+                    <a href="#" class="accordion-title">Module Two</a>
+                    <div class="accordion-content" data-tab-content>
+                        <p>Module stuff here...</p>
+                    </div>
+                </li>
+                <li class="accordion-item" data-accordion-item>
+                    <a href="#" class="accordion-title">Module Three</a>
+                    <div class="accordion-content" data-tab-content>
+                        <p>Module stuff here...</p>
+                    </div>
+                </li>
+                <li class="accordion-item" data-accordion-item>
+                    <a href="#" class="accordion-title">Module Four</a>
+                    <div class="accordion-content" data-tab-content>
+                        <p>Module stuff here...</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+            </div>
+        </div>
+
+
+
         <p>Here are some questionnaires:</p>
         <ul>
             {% for questionnaire in questionnaires %}
@@ -19,5 +55,4 @@
             {% endfor %}
         </ul>
     {% endif %}
-
 {% endblock %}
