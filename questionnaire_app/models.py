@@ -7,59 +7,41 @@ class Question(models.Model):
     Describes a question.
     """
     question_text = models.CharField(max_length=250)
+    module = models.ForeignKey(Module)
+    choice_one = models.CharField(max_length=50)
+    choice_two = models.CharField(max_length=50)
+    choice_three = models.CharField(max_length=50)
+    choice_four = models.CharField(max_length=50)
+    choice_five = models.CharField(max_length=50)
+    correct_choice = models.IntegerField()
 
     def __str__(self):
         return self.question_text
 
 
-class Questionnaire(models.Model):
+class MapActionModule(models.Model):
     """
-    Describes a questionnaire.
+    Describes a MapAction module.
     """
-    description = models.CharField(max_length=300)
-    start_date = models.DateTimeField()
-    end_date = models.DateTimeField()
-    is_open = models.BooleanField()
-
-    def __str__(self):
-        return self.description
+    id = models.IntegerField(primary_key=True)
+    name = models.CharField()
+    description = models.CharField()
 
 
-class QuestionnaireQuestion(models.Model):
+class ModuleSubmission(models.Model):
     """
-    Links a question to a questionnaire.
+    Describes a users questionnaire submission.
     """
-    question = models.ForeignKey(Question, on_delete=models.CASCADE)
-    questionnaire = models.ForeignKey(Questionnaire, on_delete=models.CASCADE)
-
-    class Meta:
-        """
-        A questionnaire must have unique questions.
-        """
-        unique_together = ['question', 'questionnaire']
-
-    def __str__(self):
-        return '{} ({}) - Q: {}'.format(self.questionnaire, self.questionnaire.id, self.question.question_text)
-
-
-class OfferedAnswer(models.Model):
-    """
-    Describes an answer to a question.
-    """
-    answer_text = models.CharField(max_length=200)
-
-
-class QuestionnaireQuestionAnswer(models.Model):
-    """
-    Links an answer to a questionnaire question.
-    """
-    questionnaire_question = models.ForeignKey(QuestionnaireQuestion, on_delete=models.CASCADE)
-    offered_answer = models.ForeignKey(OfferedAnswer, on_delete=models.CASCADE)
+    submission_date = models.DateTimeField(auto_now_add=True)
+    # Score out of 10
+    score = models.IntegerField()
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
 
 class Answer(models.Model):
     """
-    Links a questionnaire question answer to a user.
+    Describes an answer to a question.
     """
-    questionnaire_question_answer = models.ForeignKey(QuestionnaireQuestionAnswer, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    question = models.ForeignKey(Question)
+    module = models.ForeignKey(Module)
+    answer_choice = models.IntegerField()
