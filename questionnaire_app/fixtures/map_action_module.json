@@ -1,0 +1,30 @@
+[
+  {
+    "model": "questionnaire_app.mapactionmodule",
+    "pk": 1,
+    "fields": {
+      "name": "Humanitarian Principles"
+    }
+  },
+  {
+    "model": "questionnaire_app.mapactionmodule",
+    "pk": 2,
+    "fields": {
+      "name": "GIS, IM and Data"
+    }
+  },
+  {
+    "model": "questionnaire_app.mapactionmodule",
+    "pk": 3,
+    "fields": {
+      "name": "Field Operations"
+    }
+  },
+  {
+    "model": "questionnaire_app.mapactionmodule",
+    "pk": 4,
+    "fields": {
+      "name": "Soft Skills"
+    }
+  }
+]

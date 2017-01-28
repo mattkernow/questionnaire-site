@@ -3,8 +3,6 @@
 {% block content %}
     {% if user.is_authenticated %}
         <p>Welcome, {{ user.username }}.</p>
-    {% else %}
-        <p>Welcome, please <a href="/register">create an account</a> or <a href="/login">login</a></p>
     {% endif %}
 
     <p>This is the home page of the questionnaire site!</p>
@@ -13,46 +11,36 @@
 
         <div class="row">
             <div class="medium-11 large-centered columns">
-                        <div class="home-accordion">
-            <ul class="accordion" data-accordion data-allow-all-closed="true">
-                <li class="accordion-item" data-accordion-item>
-                    <a href="#" class="accordion-title">Module One</a>
-                    <div class="accordion-content" data-tab-content>
-                        <p>Module stuff here...</p>
-                    </div>
-                </li>
-                <li class="accordion-item" data-accordion-item>
-                    <a href="#" class="accordion-title">Module Two</a>
-                    <div class="accordion-content" data-tab-content>
-                        <p>Module stuff here...</p>
-                    </div>
-                </li>
-                <li class="accordion-item" data-accordion-item>
-                    <a href="#" class="accordion-title">Module Three</a>
-                    <div class="accordion-content" data-tab-content>
-                        <p>Module stuff here...</p>
-                    </div>
-                </li>
-                <li class="accordion-item" data-accordion-item>
-                    <a href="#" class="accordion-title">Module Four</a>
-                    <div class="accordion-content" data-tab-content>
-                        <p>Module stuff here...</p>
-                    </div>
-                </li>
-            </ul>
-        </div>
+                <div class="home-accordion">
+                    <ul class="accordion" data-accordion data-allow-all-closed="true">
+                        {% for module in modules %}
+                            <li class="accordion-item" data-accordion-item>
+                                <a href="#" class="accordion-title">{{ module.name }}</a>
+                                <div class="accordion-content" data-tab-content>
+
+                                    {% for submission in submissions %}
+                                        {% if submission.module.id == module.id %}
+                                            <p>Last submission: {{ submission.submission_date }}</p>
+                                            <p>Score: {{ submission.score }}/10</p>
+                                        {% endif %}
+                                    {% endfor %}
+
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
             </div>
         </div>
 
 
-
-        <p>Here are some questionnaires:</p>
-        <ul>
-            {% for questionnaire in questionnaires %}
-                <li><a href="/questionnaire/{{ questionnaire.id }}">{{ questionnaire.description }}</a></li>
-            {% empty %}
-                <p>There are currently no active questionnaires</p>
-            {% endfor %}
-        </ul>
+        {#        <p>Here are some questionnaires:</p>#}
+        {#        <ul>#}
+        {#            {% for questionnaire in questionnaires %}#}
+        {#                <li><a href="/questionnaire/{{ questionnaire.id }}">{{ questionnaire.description }}</a></li>#}
+        {#            {% empty %}#}
+        {#                <p>There are currently no active questionnaires</p>#}
+        {#            {% endfor %}#}
+        {#        </ul>#}
     {% endif %}
 {% endblock %}

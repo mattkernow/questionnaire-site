@@ -8,7 +8,9 @@ class MapActionModule(models.Model):
     """
     id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=150)
-    description = models.CharField(max_length=150)
+
+    def __str__(self):
+        return self.name
 
 
 class Question(models.Model):
@@ -35,7 +37,11 @@ class ModuleSubmission(models.Model):
     submission_date = models.DateTimeField(auto_now_add=True)
     # Score out of 10
     score = models.IntegerField()
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User)
+    module = models.ForeignKey(MapActionModule)
+
+    def __str__(self):
+        return '{0} - {1}'.format(self.user, self.submission_date)
 
 
 class Answer(models.Model):
@@ -43,5 +49,5 @@ class Answer(models.Model):
     Describes an answer to a question.
     """
     question = models.ForeignKey(Question)
-    module = models.ForeignKey(MapActionModule)
     answer_choice = models.IntegerField()
+    module_submission = models.ForeignKey(ModuleSubmission)
