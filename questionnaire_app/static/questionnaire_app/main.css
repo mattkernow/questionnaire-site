@@ -1,5 +1,5 @@
 body {
-  background: #34CFBE;
+  background: rgba(52, 207, 190, 0.74);
 }
 
 .user-box {
@@ -10,6 +10,6 @@ body {
 }
 
 .accordion-title {
-  font-size: 22px;
+    font-size: 22px;
     text-align: center;
 }

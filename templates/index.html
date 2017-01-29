@@ -2,12 +2,6 @@
 {% block title %}Home Page{% endblock %}
 {% block content %}
     {% if user.is_authenticated %}
-        <p>Welcome, {{ user.username }}.</p>
-    {% endif %}
-
-    <p>This is the home page of the questionnaire site!</p>
-
-    {% if user.is_authenticated %}
 
         <div class="row">
             <div class="medium-11 large-centered columns">
@@ -22,6 +16,7 @@
                                         {% if submission.module.id == module.id %}
                                             <p>Last submission: {{ submission.submission_date }}</p>
                                             <p>Score: {{ submission.score }}/10</p>
+                                            <a href="/module/{{ module.id }}">Take module test</a>
                                         {% endif %}
                                     {% endfor %}
 

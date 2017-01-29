@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from questionnaire_app.models import MapActionModule, ModuleSubmission
+from questionnaire_app.models import MapActionModule, ModuleSubmission, Question
+import random
 
 
 def index(request):
@@ -13,14 +14,20 @@ def index(request):
     return render(request, 'index.html', {'modules': modules, 'submissions': submissions})
 
 
-# def questionnaire(request, questionnaire_id):
-#     """
-#     Returns a questionnaire page
-#     :param request: request object
-#     :param questionnaire_id: Primary key of questionnaire requested
-#     :return: rendered template
-#     """
-#     id_as_int = int(questionnaire_id)
-#     filter_questionnaire = Questionnaire.objects.get(pk=id_as_int)
-#     questionnaire_dict = {'questionnaire': filter_questionnaire}
-#     return render(request, 'questionnaire.html', context=questionnaire_dict)
+def take_module_test(request, module_id):
+    """
+    Returns a questionnaire page
+    :param request: request object
+    :param questionnaire_id: Primary key of questionnaire requested
+    :return: rendered template
+    """
+    ma_module = MapActionModule.objects.get(pk=module_id)
+    questions = Question.objects.filter(module__id=module_id)
+
+    # Get 10 random questions
+    if questions.count() > 10:
+        for x in range(10):
+            questions = random.sample(list(questions), 10)
+
+    context_dict = {'ma_module': ma_module, 'questions': questions}
+    return render(request, 'ma_module.html', context=context_dict)

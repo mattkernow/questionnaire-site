@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}Home Page{% endblock %}
+{% block content %}
+    {% if user.is_authenticated %}
+        <h3>{{ ma_module.name }}</h3>
+
+        {% for question in questions %}
+            <p>{{ question.question_text }}</p>
+        {% endfor %}
+
+    {% endif %}
+{% endblock %}

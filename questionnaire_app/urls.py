@@ -19,5 +19,5 @@ urlpatterns = [
         name='change_pw'),
     url('^password-change-done/$', auth_views.password_change_done,
         {'template_name': 'registration/password_change_done.html'}),
-    # url('^questionnaire/(?P<questionnaire_id>\d+)/$', views.questionnaire),
+    url('^module/(?P<module_id>\d+)/$', views.take_module_test),
 ]
