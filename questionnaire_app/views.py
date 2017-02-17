@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from questionnaire_app.models import MapActionModule, ModuleSubmission, Question
+from questionnaire_app.forms import QuestionAnswerForm
 import random
 
 
@@ -29,5 +30,9 @@ def take_module_test(request, module_id):
         for x in range(10):
             questions = random.sample(list(questions), 10)
 
-    context_dict = {'ma_module': ma_module, 'questions': questions}
+    question_answer_form = QuestionAnswerForm(question_id=2)
+
+    context_dict = {'ma_module': ma_module,
+                    'questions': questions,
+                    'question_form': question_answer_form}
     return render(request, 'ma_module.html', context=context_dict)
